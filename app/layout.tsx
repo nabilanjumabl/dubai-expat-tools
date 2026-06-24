@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Dubai Expat Tools — Free UAE Calculators & Guides",
   description: "Free tools for UAE expats: salary calculator, AED currency converter, gratuity calculator, golden visa checker, rent estimator, VAT calculator and more.",
   keywords: "UAE salary calculator, AED to PKR, AED to INR, Dubai gratuity calculator, UAE golden visa, Dubai rent calculator, UAE VAT calculator",
+  verification: {
+    google: 'c9Dh8r8VheKsub58O2tIGx04Mw-0IUgs7pkSkbhUglU',
+  },
   openGraph: {
     title: "Dubai Expat Tools",
     description: "Free tools for 10 million UAE expats",

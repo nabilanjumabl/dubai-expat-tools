@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://dubaiexpattools.com";
+  const base = "https://dubaiexpattools.vercel.app";
   const now = new Date();
   return [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
@@ -17,5 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog/uae-labour-law`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/blog/best-banks-uae`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/blog/dubai-vs-abu-dhabi`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/about`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${base}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${base}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.4 },
   ];
 }

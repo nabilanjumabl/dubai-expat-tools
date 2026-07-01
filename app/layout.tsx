@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dubai Expat Tools",
     description: "Free tools for 10 million UAE expats",
-    url: "https://dubaiexpattools.com",
+    url: "https://dubaiexpattools.vercel.app",
     siteName: "Dubai Expat Tools",
     type: "website",
   },

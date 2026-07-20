@@ -1,51 +1,95 @@
-"use client";
-import { useState } from "react";
+import type { Metadata } from "next";
+import VATCalculatorClient from "./VatCalculatorClient";
 
-export default function VATCalculator() {
-  const [amount, setAmount] = useState(1000);
-  const [mode, setMode] = useState<"add" | "remove">("add");
+const url = "https://dubaiexpattools.vercel.app/tools/vat-calculator";
 
-  const vat = mode === "add" ? amount * 0.05 : amount - amount / 1.05;
-  const total = mode === "add" ? amount + vat : amount / 1.05;
-  const net = mode === "add" ? amount : total;
+export const metadata: Metadata = {
+  title: "UAE VAT Calculator — Add or Remove 5% VAT Instantly | Dubai Expat Tools",
+  description:
+    "Free UAE VAT calculator. Add 5% VAT to a price or extract VAT from a VAT-inclusive amount in seconds. Built for UAE businesses, freelancers, and individuals.",
+  keywords: "UAE VAT calculator, Dubai VAT calculator, 5% VAT UAE, add VAT UAE, remove VAT UAE, reverse VAT calculator",
+  alternates: { canonical: url },
+  openGraph: {
+    title: "UAE VAT Calculator — Add or Remove 5% VAT Instantly",
+    description: "Add 5% VAT to a price or extract VAT from a VAT-inclusive amount in seconds. Free, no sign-up.",
+    url,
+    siteName: "Dubai Expat Tools",
+    type: "website",
+  },
+};
 
+const faqs = [
+  {
+    q: "What is the VAT rate in the UAE?",
+    a: "The UAE applies a standard Value Added Tax (VAT) rate of 5% on most goods and services, in effect since January 1, 2018.",
+  },
+  {
+    q: "How do I add VAT to a price in the UAE?",
+    a: "Multiply the price before VAT by 1.05 to get the VAT-inclusive total. For example, AED 1,000 becomes AED 1,050 after adding 5% VAT.",
+  },
+  {
+    q: "How do I remove VAT from a total price?",
+    a: "Divide the VAT-inclusive total by 1.05 to get the price before VAT. For example, AED 1,050 divided by 1.05 gives a pre-VAT price of AED 1,000.",
+  },
+  {
+    q: "Are all goods and services in the UAE subject to VAT?",
+    a: "No. Some categories, such as certain healthcare, education, and residential real estate transactions, are zero-rated or exempt. Most retail, dining, and professional services are subject to the standard 5% rate.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "UAE VAT Calculator",
+      url,
+      applicationCategory: "FinanceApplication",
+      operatingSystem: "Any",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "AED" },
+      description: "Free tool to add or remove UAE's 5% VAT from any price instantly.",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+
+export default function VATCalculatorPage() {
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "3rem 1.5rem" }}>
-      <p style={{ color: "var(--text-muted)", fontSize: 13, marginBottom: "1.5rem" }}>
-        <a href="/" style={{ color: "var(--teal)", textDecoration: "none" }}>Home</a> → <a href="/tools" style={{ color: "var(--teal)", textDecoration: "none" }}>Tools</a> → VAT Calculator
-      </p>
-      <h1 style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)", fontWeight: 700, color: "var(--navy)", marginBottom: "0.5rem", letterSpacing: "-0.5px" }}>UAE VAT Calculator</h1>
-      <p style={{ color: "var(--text-muted)", fontSize: 15, marginBottom: "2.5rem" }}>Calculate UAE's 5% VAT instantly — add VAT to a price or extract VAT from a VAT-inclusive amount.</p>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <VATCalculatorClient />
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 1.5rem 3rem" }}>
         <div style={{ background: "white", border: "1px solid var(--border)", borderRadius: 16, padding: "2rem" }}>
-          <div style={{ display: "flex", gap: 8, marginBottom: "1.5rem" }}>
-            {[["Add VAT to price", "add"], ["Remove VAT from total", "remove"]].map(([label, val]) => (
-              <button key={val} onClick={() => setMode(val as "add" | "remove")}
-                style={{ flex: 1, padding: "10px", borderRadius: 10, border: "1.5px solid", borderColor: mode === val ? "var(--teal)" : "var(--border)", background: mode === val ? "#E6F7F4" : "white", color: mode === val ? "var(--teal)" : "var(--text-muted)", fontSize: 13, fontWeight: 500, cursor: "pointer" }}>
-                {label}
-              </button>
-            ))}
-          </div>
-          <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "var(--text-dark)", marginBottom: 8 }}>
-            {mode === "add" ? "Price before VAT (AED)" : "Total price inc. VAT (AED)"}
-          </label>
-          <input className="calc-input" type="number" value={amount} onChange={e => setAmount(Number(e.target.value))} style={{ fontSize: 22, fontWeight: 600 }} />
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <div className="result-box">
-            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginBottom: 6 }}>VAT amount (5%)</div>
-            <div style={{ fontSize: "2.5rem", fontWeight: 700, color: "var(--gold)", letterSpacing: "-1px" }}>AED {Math.round(Math.abs(vat)).toLocaleString()}</div>
-          </div>
-          {[["Net (excl. VAT)", `AED ${Math.round(net).toLocaleString()}`], ["Total (incl. VAT)", `AED ${Math.round(mode === "add" ? total : amount).toLocaleString()}`], ["VAT rate", "5% (UAE standard)"]].map(([label, val]) => (
-            <div key={label} style={{ background: "white", border: "1px solid var(--border)", borderRadius: 12, padding: "1rem 1.25rem", display: "flex", justifyContent: "space-between" }}>
-              <span style={{ color: "var(--text-muted)", fontSize: 14 }}>{label}</span>
-              <span style={{ fontWeight: 600, color: "var(--navy)", fontSize: 14 }}>{val}</span>
+          <h2 style={{ fontSize: 18, fontWeight: 600, color: "var(--navy)", marginBottom: "1rem" }}>
+            Understanding UAE VAT
+          </h2>
+          <p style={{ color: "var(--text-muted)", fontSize: 14, lineHeight: 1.8, marginBottom: "1.5rem" }}>
+            The UAE introduced a standard 5% Value Added Tax on January 1, 2018, applying to most goods and services
+            sold within the country. Businesses registered for VAT must charge it on taxable supplies and can
+            usually reclaim VAT paid on business expenses. This calculator helps you quickly add VAT to a
+            pre-tax price, or work backwards from a VAT-inclusive total to find the original price.
+          </p>
+          <h3 style={{ fontSize: 15, fontWeight: 600, color: "var(--navy)", marginBottom: "0.75rem" }}>
+            Frequently asked questions
+          </h3>
+          {faqs.map((f) => (
+            <div key={f.q} style={{ marginBottom: "1.1rem" }}>
+              <p style={{ fontSize: 14, fontWeight: 600, color: "var(--text-dark)", marginBottom: 4 }}>{f.q}</p>
+              <p style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.7, margin: 0 }}>{f.a}</p>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }

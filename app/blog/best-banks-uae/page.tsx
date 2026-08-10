@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Best Banks in UAE for Expats 2026 — Full Comparison | Dubai Expat Tools",
   description: "Compare the best banks in UAE for expats in 2026: Emirates NBD, FAB, ADCB, Mashreq Neo, and ENBD digital. Account opening, fees, minimum balance, and remittance rates compared.",
   keywords: "best bank UAE expats 2026, Emirates NBD expat account, FAB account UAE, ADCB expat, Mashreq Neo, open bank account UAE, UAE bank comparison",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/blog/best-banks-uae" },
 };
 
 const banks = [

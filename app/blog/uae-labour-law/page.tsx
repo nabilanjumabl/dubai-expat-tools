@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "UAE Labour Law 2025 Changes: What Every Expat Must Know | Dubai Expat Tools",
   description: "UAE updated its labour law with Federal Law No. 33 of 2021. Complete guide to gratuity changes, unlimited vs limited contracts, probation, and termination rules for expats in 2025-2026.",
   keywords: "UAE labour law 2025, UAE gratuity law, UAE employment law, unlimited contract UAE, UAE end of service benefits, Federal Law 33 2021",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/blog/uae-labour-law" },
 };
 
 const changes = [

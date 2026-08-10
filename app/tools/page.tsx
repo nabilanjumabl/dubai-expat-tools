@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "All Free UAE Tools | Dubai Expat Tools",
   description: "Browse all free tools for UAE expats: salary calculator, currency converter, gratuity calculator, VAT calculator, golden visa checker, and rent estimator.",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/tools" },
 };
 
 const tools = [

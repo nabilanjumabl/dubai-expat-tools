@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy | Dubai Expat Tools",
   description: "Privacy policy for Dubai Expat Tools. We do not collect personal data. Learn how we handle information and use of cookies.",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/privacy" },
 };
 
 export default function Privacy() {

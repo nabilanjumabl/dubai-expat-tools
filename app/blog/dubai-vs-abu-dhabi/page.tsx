@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Dubai vs Abu Dhabi: Which City Pays Better in 2026? | Dubai Expat Tools",
   description: "Salary comparison between Dubai and Abu Dhabi across 10 sectors. Cost of living, lifestyle, and which emirate is better for your career in 2026.",
   keywords: "Dubai vs Abu Dhabi salary, Abu Dhabi vs Dubai for expats, which city pays more UAE, Dubai Abu Dhabi cost of living comparison 2026",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/blog/dubai-vs-abu-dhabi" },
 };
 
 const sectors = [

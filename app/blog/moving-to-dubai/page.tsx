@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Moving to Dubai 2026: Complete Expat Checklist | Dubai Expat Tools",
   description: "Everything you need before moving to Dubai in 2026: visa steps, accommodation, bank account, Ejari registration, Emirates ID, driving licence and more.",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/blog/moving-to-dubai" },
 };
 
 export default function MovingToDubai() {

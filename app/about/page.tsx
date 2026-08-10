@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Dubai Expat Tools — Free UAE Calculators",
   description: "Dubai Expat Tools is a free resource for the 10 million expats living and working in the UAE. Learn about our mission, tools, and team.",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/about" },
 };
 
 export default function About() {

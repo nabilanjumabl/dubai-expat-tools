@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog — UAE Expat Guides | Dubai Expat Tools",
   description: "Free guides for UAE expats. Moving to Dubai checklist, UAE labour law, best banks, salary comparisons and more.",
+  alternates: { canonical: "https://dubaiexpattools.vercel.app/blog" },
 };
 
 const posts = [

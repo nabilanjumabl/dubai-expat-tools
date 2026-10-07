@@ -47,7 +47,7 @@ export default function CurrencyConverterClient() {
       <p style={{ color: "var(--text-muted)", fontSize: 13, marginBottom: "1.5rem" }}>
         <a href="/" style={{ color: "var(--teal)", textDecoration: "none" }}>Home</a> → <a href="/tools" style={{ color: "var(--teal)", textDecoration: "none" }}>Tools</a> → Currency Converter
       </p>
-      <h1 style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)", fontWeight: 700, color: "var(--navy)", marginBottom: "0.5rem", letterSpacing: "-0.5px" }}>AED Currency Converter</h1>
+      <h1 style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)", fontWeight: 700, color: "var(--navy)", marginBottom: "0.5rem", letterSpacing: "-0.5px" }}>AED Currency Converter — Live Dirham to PKR, INR, PHP Rates</h1>
       <p style={{ color: "var(--text-muted)", fontSize: 15, marginBottom: "2.5rem" }}>Convert UAE Dirhams to PKR, INR, PHP and 7 other currencies. <span style={{ color: "var(--teal)", fontWeight: 500 }}>{lastUpdated}</span></p>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
